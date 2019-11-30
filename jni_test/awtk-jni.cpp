@@ -20,7 +20,9 @@ static int object_sum(object_t* o, int a, int b) {
 }
 
 static void object_destroy(object_t* o) {
-  printf("free:%p\n", o);
+  printf("destroy obj=%lu\n", (jlong)o);
+
+  free(o);
 }
 
 object_t* object_create(void) {
@@ -31,33 +33,33 @@ object_t* object_create(void) {
   return o;
 }
 
-JNIEXPORT jlong JNICALL Java_HelloWorld_create(JNIEnv* env) {
+JNIEXPORT jlong JNICALL Java_HelloWorld_create(JNIEnv* env,  jclass c) {
   jlong ret = reinterpret_cast<jlong>(object_create());
   printf("ret=%lu\n", ret);
 
   return ret;
 }
 
-JNIEXPORT int JNICALL Java_HelloWorld_sum(JNIEnv* env, jlong obj, jint a, jint b) {
+JNIEXPORT int JNICALL Java_HelloWorld_sum(JNIEnv* env,  jclass c, jlong obj, jint a, jint b) {
   printf("sum obj=%lu\n", obj);
   return object_sum(reinterpret_cast<object_t*>(obj), a, b);
 }
 
-JNIEXPORT void JNICALL Java_HelloWorld_destroy(JNIEnv* env, jlong obj) {
+JNIEXPORT void JNICALL Java_HelloWorld_destroy(JNIEnv* env,  jclass c, jlong obj) {
   return object_destroy(reinterpret_cast<object_t*>(obj));
 }
 
 #endif
-JNIEXPORT void JNICALL Java_HelloWorld_print(JNIEnv* env, jobject obj) {
+JNIEXPORT void JNICALL Java_HelloWorld_print(JNIEnv* env,  jclass c, jobject obj) {
   printf("Hello World!\n");
   return;
 }
 
-JNIEXPORT void JNICALL Java_Widget_print(JNIEnv* env, jobject obj) {
+JNIEXPORT void JNICALL Java_Widget_print(JNIEnv* env,  jclass c, jobject obj) {
   printf("Hello Widget!\n");
   return;
 }
 
-JNIEXPORT int JNICALL Java_HelloWorld_get_1ok(JNIEnv* env) {
+JNIEXPORT int JNICALL Java_HelloWorld_get_1ok(JNIEnv* env,  jclass c) {
   return 1;
 }

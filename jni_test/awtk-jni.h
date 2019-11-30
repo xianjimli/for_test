@@ -8,17 +8,17 @@
 extern "C" {
 #endif
 
-JNIEXPORT jlong JNICALL Java_HelloWorld_create(JNIEnv* env);
+JNIEXPORT jlong JNICALL Java_HelloWorld_create(JNIEnv* env,  jclass c);
 
-JNIEXPORT int JNICALL Java_HelloWorld_get_1ok(JNIEnv* env);
+JNIEXPORT int JNICALL Java_HelloWorld_get_1ok(JNIEnv* env,  jclass c);
 
-JNIEXPORT int JNICALL Java_HelloWorld_sum(JNIEnv* env, jlong obj, jint a, jint b);
+JNIEXPORT int JNICALL Java_HelloWorld_sum(JNIEnv* env,  jclass c, jlong obj, jint a, jint b);
 
-JNIEXPORT void JNICALL Java_HelloWorld_destroy(JNIEnv* env, jlong obj);
+JNIEXPORT void JNICALL Java_HelloWorld_destroy(JNIEnv* env,  jclass c, jlong obj);
 
-JNIEXPORT void JNICALL Java_HelloWorld_print(JNIEnv* env, jobject obj);
+JNIEXPORT void JNICALL Java_HelloWorld_print(JNIEnv* env,  jclass c, jobject obj);
 
-JNIEXPORT void JNICALL Java_Widget_print(JNIEnv* env, jobject obj);
+JNIEXPORT void JNICALL Java_Widget_print(JNIEnv* env,  jclass c, jobject obj);
 
 #ifdef __cplusplus
 }
