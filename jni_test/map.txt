@@ -1,0 +1,25 @@
+boolean jboolean
+byte jbyte
+
+char
+jchar
+
+double
+jdouble
+
+float
+jfloat
+
+int
+jint
+
+long
+jlong
+
+short
+jshort
+
+void
+void
+
+
